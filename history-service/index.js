@@ -18,6 +18,13 @@ app.get("/test", (req, res) => {
     res.json("history microservice connected")
 });
 
+
+app.get("/", (req, res) => {
+  res.json("You connected to history microservice")
+});
+
+
+
 //routes for user behaviour
 app.use("/history", require('./routes/history-route'));
 

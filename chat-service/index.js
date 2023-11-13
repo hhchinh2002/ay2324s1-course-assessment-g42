@@ -12,6 +12,11 @@ const io = socketIo(server);
 const rooms = {};
 const usernames = {};
 
+
+app.get("/", (req, res) => {
+  res.json("You connected to chat microservice")
+});
+
 app.use(
   cors({
     credentials: true,

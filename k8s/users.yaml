@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: users2
+  name: users2
+  namespace: default
+spec:
+  ports:
+  - name: "5000"
+    port: 5000
+    targetPort: 5000
+  selector:
+    service: users2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: users2
+  name: users2
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: users2
+  template:
+    metadata:
+      labels:
+        service: users2
+    spec:
+      containers:
+      - image: asia-docker.pkg.dev/peerpre-g42/peerprep/users2
+        imagePullPolicy: Always
+        name: users2
+        ports:
+        - containerPort: 5000

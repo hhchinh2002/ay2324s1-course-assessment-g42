@@ -12,6 +12,11 @@ const { disconnect } = require('process');
 const server = http.createServer(app);
 const io = socketIo(server);
 
+
+app.get("/", (req, res) => {
+  res.json("You connected to collaboration microservice")
+});
+
 app.use(
   cors({
     credentials: true,
